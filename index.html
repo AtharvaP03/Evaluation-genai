@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Question Generator</title>
+</head>
+<body>
+    <h1>Technical Question Generator</h1>
+    <button onclick="generateQuestion()">Generate Question</button>
+    <div id="question"></div>
+    <textarea id="answer" placeholder="Enter your answer"></textarea>
+    <button onclick="evaluateAnswer()">Evaluate Answer</button>
+    <div id="result"></div>
+
+    <script>
+        function generateQuestion() {
+            fetch('/generate_question')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('question').innerText = data.question;
+            });
+        }
+
+        function evaluateAnswer() {
+            const question = document.getElementById('question').innerText;
+            const answer = document.getElementById('answer').value;
+
+            fetch('/evaluate_answer', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ question, answer })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('result').innerText = `Score: ${data.score}, Grade: ${data.grade}`;
+            });
+        }
+    </script>
+</body>
+</html>
