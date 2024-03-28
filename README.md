@@ -34,7 +34,7 @@ The Technical Interview Question Generator is a Flask application that dynamical
 
 1. **Run the Application:**
    ```
-   python app.py
+   python eva.py
    ```
 
 2. **Access the Application:**
