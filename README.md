@@ -1,56 +1,41 @@
-Sure, here's a more concise version:
+# Answer Evaluation Web Application
 
----
+This web application evaluates answers to given questions based on various criteria and provides a final score along with a breakdown of the evaluation.
 
-# Technical Interview Question/Answer Evaluation 
+## Setup Instructions
 
-The Technical Interview Question Generator is a Flask application that dynamically generates technical questions for practice purposes. It utilizes the OpenAI API to create questions based on predefined topics like Arrays, Linked Lists, Stacks and Queues, and Trees. Users can also evaluate their answers using a rubric-based evaluation system.
-
-## Features
-
-- **Dynamic Question Generation:** Generate technical questions on-the-fly from predefined topics.
-- **OpenAI Integration:** Utilize the OpenAI API for question generation.
-- **Rubric-Based Evaluation:** Assess user-provided answers using predefined criteria.
-- **User-Friendly Interface:** Easy-to-use web interface for generating questions and evaluating answers.
-
-## Installation
-
-1. **Clone the Repository:**
-   ```
-   git clone https://github.com/your-username/technical-interview-question-generator.git
-   ```
-   
-2. **Navigate to the Project Directory:**
-   ```
-   cd technical-interview-question-generator
-   ```
-   
-3. **Install Dependencies:**
-   ```
-   pip install -r requirements.txt
-   ```
+1. Clone this repository to your local machine.
+2. Install the required dependencies by running `pip install -r requirements.txt`.
+3. Obtain the API key for the Google Generative AI and replace `"-----------------------"` with your actual API key in the `genai.py` file.
+4. Run the Flask application by executing `python genai.py` in your terminal.
+5. Access the web application in your browser by navigating to `http://localhost:5000`.
 
 ## Usage
 
-1. **Run the Application:**
-   ```
-   python Eva.py
-   ```
+1. Enter the question in the provided input field.
+2. Enter the answer in the textarea.
+3. Click the "Evaluate" button to get the evaluation result.
 
-2. **Access the Application:**
-   - Open your web browser and go to `http://localhost:5000`.
-   
-3. **Generate a Question:**
-   - Click on the "Generate Question" button to receive a randomly generated technical question.
-   
-4. **Evaluate Your Answer:**
-   - Enter your answer and click on the "Evaluate" button to assess your response based on the rubric.
+## Evaluation Criteria
 
-## Contributing
+The evaluation is based on the following criteria:
+- Accuracy
+- Completeness
+- Relevance
+- Clarity
+- Depth
+- Organization
+- Use of Evidence
+- Grammar and Spelling
+- Sentiment
 
-Contributions are welcome! If you'd like to contribute to this project, please fork the repository, make your changes, and submit a pull request.
+## Sentiment Interpretation
 
+- **0**: Neutral sentiment
+- **1**: Strong positive sentiment
+- **-1**: Strong negative sentiment
 
----
+## Credits
 
-This version condenses the README content into a single section while still providing all the necessary information about the application, its features, installation, usage, contribution guidelines, and licensing.
+- This application uses Google Generative AI for evaluating answers.
+- TextBlob library is used for sentiment analysis.
