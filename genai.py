@@ -14,7 +14,7 @@ import os
 
 
 app = Flask(__name__)
-load_dotenv()
+
 rubric = {
     "Excellent": {"min_score": 90, "criteria": {"Accuracy": {"weight": 0.175}, "Completeness": {"weight": 0.175}, "Relevance": {"weight": 0.1}, "Clarity": {"weight": 0.175}, "Depth": {"weight": 0.1}, "Organization": {"weight": 0.1}, "Use of Evidence": {"weight": 0.1}, "Grammar and Spelling": {"weight": 0.1}, "Sentiment": {"weight": 0.075}}},
     "Good": {"min_score": 75, "criteria": {"Accuracy": {"weight": 0.175}, "Completeness": {"weight": 0.175}, "Relevance": {"weight": 0.1}, "Clarity": {"weight": 0.175}, "Depth": {"weight": 0.1}, "Organization": {"weight": 0.1}, "Use of Evidence": {"weight": 0.1}, "Grammar and Spelling": {"weight": 0.1}, "Sentiment": {"weight": 0.075}}},
