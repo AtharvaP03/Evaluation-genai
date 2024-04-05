@@ -1,10 +1,20 @@
+"""
+_________________________________________________________________
+This is the code for the Evaluation
+_________________________________________________________________
+"""
+
+
 from flask import Flask, request, jsonify, render_template
 import re
 from textblob import TextBlob
 import google.generativeai as genai
+from dotenv import load_dotenv
+import os
+
 
 app = Flask(__name__)
-
+load_dotenv()
 rubric = {
     "Excellent": {"min_score": 90, "criteria": {"Accuracy": {"weight": 0.175}, "Completeness": {"weight": 0.175}, "Relevance": {"weight": 0.1}, "Clarity": {"weight": 0.175}, "Depth": {"weight": 0.1}, "Organization": {"weight": 0.1}, "Use of Evidence": {"weight": 0.1}, "Grammar and Spelling": {"weight": 0.1}, "Sentiment": {"weight": 0.075}}},
     "Good": {"min_score": 75, "criteria": {"Accuracy": {"weight": 0.175}, "Completeness": {"weight": 0.175}, "Relevance": {"weight": 0.1}, "Clarity": {"weight": 0.175}, "Depth": {"weight": 0.1}, "Organization": {"weight": 0.1}, "Use of Evidence": {"weight": 0.1}, "Grammar and Spelling": {"weight": 0.1}, "Sentiment": {"weight": 0.075}}},
@@ -38,7 +48,7 @@ def evaluate():
     Answer: {answer}
     """
 
-    genai.configure(api_key="----------------------------") # add api key
+    genai.configure(api_key = os.getenv("gemini_api_key" ))# add api key
     model = genai.GenerativeModel('gemini-pro')
     response = model.generate_content(prompt)
 
@@ -67,6 +77,7 @@ def evaluate():
 @app.route('/')
 def index():
     return render_template('index1.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
